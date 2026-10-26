@@ -1,0 +1,12 @@
+{
+  "domain": "geist_pdu",
+  "name": "Geist rPDU",
+  "codeowners": [],
+  "config_flow": true,
+  "documentation": "https://github.com/cole124/Home-Assistant",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/cole124/Home-Assistant/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

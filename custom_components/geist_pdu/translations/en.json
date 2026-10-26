@@ -1,0 +1,20 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Geist rPDU",
+        "description": "Enter the IP address or host name of the PDU's web interface.",
+        "data": {
+          "host": "Host"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Couldn't reach the PDU's /api/dev page at that address.",
+      "no_outlets": "The device answered but reported no outlets."
+    },
+    "abort": {
+      "already_configured": "This PDU is already set up."
+    }
+  }
+}
