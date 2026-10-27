@@ -19,6 +19,14 @@ def m(mtype, value, units, state="normal"):
 
 PAYLOAD = {
     "data": {
+        "DA000000A866ED12": {
+            "type": "afht3", "label": "RTAFHD3", "name": "RTAFHD3", "state": "normal",
+            "entity": {"0": {"name": "RTAFHD3", "measurement": {
+                "0": m("temperature", "23.38", "C"),
+                "1": m("humidity", "47", "%"),
+                "2": m("dewpoint", "11.43", "C"),
+                "3": m("airflow", "30", "")}}},
+        },
         "1E000009A0FD9428": {
             "type": "remotetemp", "label": "SRT", "name": "SRT", "state": "unavailable",
             "entity": {"0": {"name": "SRT", "measurement": {

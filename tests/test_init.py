@@ -50,6 +50,14 @@ async def test_setup_creates_devices(hass, aioclient_mock):
     assert entreg.async_get("sensor.deep_freeze_apparent_power").disabled_by
     assert entreg.async_get("sensor.geist_upgradable_rpdu_total_power").disabled_by
 
+    # Airflow probe: all four readings, Celsius kept as Celsius.
+    temp = hass.states.get("sensor.rtafhd3_temperature")
+    assert temp.attributes["unit_of_measurement"] == "°C" and float(temp.state) == 23.38
+    dew = hass.states.get("sensor.rtafhd3_dew_point")
+    assert dew.attributes["unit_of_measurement"] == "°C" and float(dew.state) == 11.43
+    assert float(hass.states.get("sensor.rtafhd3_airflow").state) == 30.0
+    assert float(hass.states.get("sensor.rtafhd3_humidity").state) == 47.0
+
     # The unavailable probe shows as unavailable, not as an error.
     assert hass.states.get("sensor.srt_temperature").state == "unavailable"
 

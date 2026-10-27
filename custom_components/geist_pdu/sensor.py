@@ -100,6 +100,19 @@ SENSORS: dict[str, GeistSensorDescription] = {
         state_class=SensorStateClass.MEASUREMENT,
         suggested_display_precision=1,
     ),
+    "dewpoint": GeistSensorDescription(
+        key="dewpoint",
+        name="Dew point",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        state_class=SensorStateClass.MEASUREMENT,
+        suggested_display_precision=1,
+    ),
+    "airflow": GeistSensorDescription(
+        key="airflow",
+        name="Airflow",
+        icon="mdi:weather-windy",
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
     "humidity": GeistSensorDescription(
         key="humidity",
         name="Humidity",
@@ -182,7 +195,7 @@ class GeistSensor(GeistEntity, SensorEntity):
             if disabled:
                 self._attr_entity_registry_enabled_default = False
 
-        if mtype == "temperature":
+        if mtype in ("temperature", "dewpoint"):
             reading = self._reading
             self._attr_native_unit_of_measurement = TEMP_UNITS.get(
                 (reading.units if reading else "F").upper(), UnitOfTemperature.FAHRENHEIT
